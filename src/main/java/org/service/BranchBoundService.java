@@ -12,7 +12,7 @@ public class BranchBoundService {
     //TODO: analisar e modificar o parametro da mochila
 //   public static Double capacidadeMochila = 524.0;
 
-    public Double branchAndBound(List<Objeto> objetos) {
+    public Double solverRecursionTree(List<Objeto> objetos) {
 
 
         Nodo melhorNodo = new Nodo(-1, 0.0, 0.0, 0.0); //Instancia o primeiro nodo
