@@ -1,16 +1,21 @@
 package org.model;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ObjetosArmazenados {
 
-    List<Nodo> nodos = new ArrayList<>();
+    Set<Nodo> nodos = new LinkedHashSet<>();
 
-    List<Objeto> objetoList = new ArrayList<>();
+    Set<Objeto> objetoList = new LinkedHashSet<>();
 
     private Double valorTotal = 0.0;
     private Double pesoAtingido = 0.0;
+
+    public ObjetosArmazenados() {
+    }
 
     public void addNodo(Nodo nodo){
         nodos.add(nodo);
@@ -28,7 +33,7 @@ public class ObjetosArmazenados {
         this.valorTotal += valor;
     }
 
-    public List<Nodo> getNodos() {
+    public Set<Nodo> getNodos() {
         return nodos;
     }
 
@@ -41,7 +46,7 @@ public class ObjetosArmazenados {
         return valorTotal;
     }
 
-    public List<Objeto> getObjetoList() {
+    public Set<Objeto> getObjetoList() {
         return objetoList;
     }
 }

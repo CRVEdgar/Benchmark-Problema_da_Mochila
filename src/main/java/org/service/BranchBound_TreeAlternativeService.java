@@ -8,9 +8,9 @@ import java.util.List;
 import static org.util.Values.LIMITE_MOCHILA;
 import static org.util.Values.OBJETOS_ARMAZENADOS;
 
-public class BranchBoundService {
+public class BranchBound_TreeAlternativeService {
 
-    public Double solverRecursionTree(List<Objeto> objetos) {
+    public Double solverRecursionTree_Alternative(List<Objeto> objetos) {
 
 
         Nodo melhorNodo = new Nodo(-1, 0.0, 0.0, 0.0); //Instancia o primeiro nodo
@@ -35,9 +35,14 @@ public class BranchBoundService {
                 Nodo ramoEsquerdo = new Nodo(nodoAtual.getNivel(), valorAtual, pesoAtual, valorEstimado);
                 melhorNodo = branchAndBoundRecursivo(objetos, ramoEsquerdo, melhorNodo);
 
+
+                nodoAtual.decrementPesoTotal( objetos.get(nodoAtual.getNivel()).getPeso() );
+                nodoAtual.decrementValorTotal( objetos.get(nodoAtual.getNivel()).getValorTotal() );
+
                 Nodo ramoDireito = new Nodo(nodoAtual.getNivel(), nodoAtual.getValorTotal(), nodoAtual.getPesoTotal(), valorEstimado);
                 melhorNodo = branchAndBoundRecursivo(objetos, ramoDireito, melhorNodo);
             }
+
 
             if (nodoAtual.getPesoTotal() <= LIMITE_MOCHILA && nodoAtual.getValorTotal() + valorEstimado > melhorNodo.getValorTotal()) {
                 Nodo ramoSuperior = new Nodo(nodoAtual.getNivel(), nodoAtual.getValorTotal(), nodoAtual.getPesoTotal(), valorEstimado);
@@ -46,9 +51,11 @@ public class BranchBoundService {
                 break;
             }
         }
+
         OBJETOS_ARMAZENADOS.addPeso(melhorNodo.getPesoTotal());
         OBJETOS_ARMAZENADOS.addValor(melhorNodo.getValorTotal());
 
+//        System.out.println(" --- MELHOR CASO: Peso Total: " + melhorNodo.getPesoTotal() + " || Valor Total: " + melhorNodo.getValorTotal());
         return melhorNodo.getValorTotal();
     }
 
@@ -68,6 +75,7 @@ public class BranchBoundService {
         if (nivel < objetos.size()) {
             valorEstimado += (pesoRestante / objetos.get(nivel).getPeso()) * objetos.get(nivel).getValorTotal();
         }
+//        System.out.println("VALOR ESTIMADO APÓS DIVISAO: " + valorEstimado);
 
         return valorEstimado;
     }

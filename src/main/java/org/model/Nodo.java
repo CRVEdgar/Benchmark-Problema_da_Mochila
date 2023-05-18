@@ -1,5 +1,7 @@
 package org.model;
 
+import java.util.Objects;
+
 public class Nodo {
     int nivel;
     Double valorTotal;
@@ -65,5 +67,17 @@ public class Nodo {
                 ", pesoTotal=" + pesoTotal +
                 ", valorEstimado=" + valorEstimado +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Nodo nodo)) return false;
+        return Objects.equals(getValorTotal(), nodo.getValorTotal()) && Objects.equals(getPesoTotal(), nodo.getPesoTotal());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getValorTotal(), getPesoTotal());
     }
 }

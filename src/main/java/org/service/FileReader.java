@@ -14,8 +14,6 @@ public class FileReader {
         File file = new File(DIR);
         List<Objeto> objetos = Poiji.fromExcel(file, Objeto.class);
 
-//        System.out.println(objetos);
-
         return objetos;
     }
 
