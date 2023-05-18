@@ -5,7 +5,7 @@ import org.model.Objeto;
 
 import java.util.List;
 
-import static org.util.DirFile.LIMITE_MOCHILA;
+import static org.util.Values.LIMITE_MOCHILA;
 
 public class BranchBoundService {
 

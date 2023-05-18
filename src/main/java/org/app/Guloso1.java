@@ -1,17 +1,17 @@
 package org.app;
 
 import org.model.ObjetosArmazenados;
-import org.service.GulosoByPeso;
+import org.service.GulosoService;
 
 import static org.service.FileReader.getObjetos;
-import static org.util.DirFile.LIMITE_MOCHILA;
+import static org.util.Values.LIMITE_MOCHILA;
 
 public class Guloso1 {
 
     public static void main(String[] args) {
-        GulosoByPeso service = new GulosoByPeso();
+        GulosoService service = new GulosoService();
 
-        ObjetosArmazenados objetosNaMochila = service.knapsack(getObjetos(), LIMITE_MOCHILA);
+        ObjetosArmazenados objetosNaMochila = service.solverGulosoByPeso(getObjetos(), LIMITE_MOCHILA);
 
         System.out.println("OBJETOS NA MOCHILA: ");
         objetosNaMochila.getObjetoList().forEach(objeto -> {

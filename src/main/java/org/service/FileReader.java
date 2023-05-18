@@ -6,7 +6,7 @@ import org.model.Objeto;
 import java.io.File;
 import java.util.List;
 
-import static org.util.DirFile.DIR;
+import static org.util.Values.DIR;
 
 public class FileReader {
 

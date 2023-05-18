@@ -4,7 +4,7 @@ import org.model.ObjetosArmazenados;
 import org.service.BranchBoundDinamicService;
 
 import static org.service.FileReader.getObjetos;
-import static org.util.DirFile.LIMITE_MOCHILA;
+import static org.util.Values.LIMITE_MOCHILA;
 
 public class BranchBoundDinamic {
 
@@ -14,7 +14,6 @@ public class BranchBoundDinamic {
         ObjetosArmazenados valorFinal = service.solverDinamic(LIMITE_MOCHILA ,getObjetos());
 
         System.out.println("VALOR TOTAL: " + valorFinal.getValorTotal());
-
-
+        
     }
 }
