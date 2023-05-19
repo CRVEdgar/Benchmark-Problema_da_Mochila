@@ -3,17 +3,21 @@ package org.service;
 import org.model.Objeto;
 import org.model.ObjetosArmazenados;
 
+import java.util.Comparator;
 import java.util.List;
-
-import static org.util.Values.LIMITE_MOCHILA;
 
 public class GulosoService {
 
+    /** @NOTE: ORDDENAÇÃO por peso permitirá que os objetos de menor peso estejam no inicio da lista,
+     * dessa forma serão 'consumidos' primeiro pelo algoritmo guloso */
     public ObjetosArmazenados solverGulosoByPeso(List<Objeto> objetos, Double pesoMaximo) {
         ObjetosArmazenados objetosArmazenados = new ObjetosArmazenados();
         Double pesoAtual = 0.0;
         Double valorTotal = 0.0;
 
+        /** Ordena por Peso - de modo que a ordem fique crescente*/
+        objetos.sort( (p1, p2) -> p1.getPeso().compareTo(p2.getPeso()) );
+
         for (Objeto item : objetos) {
             if (pesoAtual + item.getPeso() <= pesoMaximo) {
                 objetosArmazenados.addObjeto(item);
@@ -23,32 +27,19 @@ public class GulosoService {
                 pesoAtual += item.getPeso();
                 valorTotal += item.getValorTotal();
             }
-            /*else {
-                break;
-            }*/
+
         }
 
         return objetosArmazenados;
     }
 
+    /** @NOTE: ORDDENAÇÃO por valor permitirá que os objetos de maior valor estejam no inicio da lista,
+     * dessa forma serão 'consumidos' primeiro pelo algoritmo guloso */
     public ObjetosArmazenados solverGulosoByValor(List<Objeto> objetos, Double pesoMaximo) {
-//        ObjetosArmazenados objetosArmazenados = new ObjetosArmazenados();
-//        Double valorTotal = 0.0;
-//        Double pesoDisponivel = LIMITE_MOCHILA;
-//
-//        for(int i=0; i<objetos.size(); i++){
-//            if(pesoDisponivel >= LIMITE_MOCHILA){
-//                objetosArmazenados.addObjeto(objetos.get(i));
-//                objetosArmazenados.addPeso(objetos.get(i).getPeso());
-//                objetosArmazenados.addValor(objetos.get(i).getValorTotal());
-//
-//                pesoDisponivel -= objetos.get(i).getPeso();
-//                valorTotal += objetos.get(i).getValorTotal();
-//            }
-//        }
-//        return objetosArmazenados;
-//
-//    }
+
+        Comparator<Objeto> comparator = getOrderByValor();
+        /** Ordena por Valor - invertendo a ordem do comparator, de modo que a ordem fique decrescente*/
+        objetos.sort( comparator.reversed() );
 
         ObjetosArmazenados objetosArmazenados = new ObjetosArmazenados();
         Double pesoAtual = 0.0;
@@ -63,11 +54,15 @@ public class GulosoService {
                 pesoAtual += item.getPeso();
                 valorTotal += item.getValorTotal();
             }
-            /*else {
-                break;
-            }*/
+
         }
 
         return objetosArmazenados;
     }
+
+    private Comparator<Objeto> getOrderByValor() {
+        /** ordena por Valor - ordem crescente*/
+        return (p1, p2) -> p1.getValorTotal().compareTo(p2.getValorTotal());
+    }
+
 }
