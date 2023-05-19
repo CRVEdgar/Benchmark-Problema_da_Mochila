@@ -15,6 +15,7 @@ public class DinamicProgrammingSolver {
         service.solverDinamic(LIMITE_MOCHILA ,getObjetos());
         long finish = System.currentTimeMillis();
 
+        System.out.println(" ****** [PROGRAMAÇÃO DINAMICA] VALORES ÓTIMOS: ******" );
         System.out.println("VALOR TOTAL: " + OBJETOS_ARMAZENADOS.getValorTotal() + " || PESO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
         System.out.println("TEMPO TOTAL DA EXECUÇÃO: " + (finish-init) + " (milisegundos)");
 

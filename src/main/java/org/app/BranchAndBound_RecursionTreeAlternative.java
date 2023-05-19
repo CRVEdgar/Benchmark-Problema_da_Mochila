@@ -15,20 +15,17 @@ public class BranchAndBound_RecursionTreeAlternative {
         long init = System.currentTimeMillis();
         service.solverRecursionTree_Alternative(getObjetos());
         long finish = System.currentTimeMillis();
-
-//        System.out.println(" ****** VALORES ÓTIMOS: ******" );
-//        System.out.printf("PESO MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
-//        System.out.printf("\nVALOR MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getValorTotal());
-//
-//        System.out.println( "\n");
+        var ref = new Object() {
+            int cont = 1;
+        };
 
         System.out.println(" **** HISTÓRICO COM A VERIFICAÇÃO DE CASOS OTIMOS: ****");
         OBJETOS_ARMAZENADOS.getNodos().forEach( nodo -> {
-            System.out.println("nodos adicionado: " + nodo.getPesoTotal() + " || " + nodo.getValorTotal());
+            System.out.println("ITERAÇÃO: " + ref.cont + " ==> PESO: " + nodo.getPesoTotal() + " || VALOR: " + nodo.getValorTotal());
         });
 
         System.out.println("\n\n");
-        System.out.println(" ****** VALORES ÓTIMOS: ******" );
+        System.out.println(" ****** [Branch and Bound 2] VALORES ÓTIMOS: ******" );
         System.out.printf("PESO MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
         System.out.printf("\nVALOR MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getValorTotal());
         System.out.println("\nTEMPO TOTAL DA EXECUÇÃO: " + (finish-init) + " (milisegundos)");

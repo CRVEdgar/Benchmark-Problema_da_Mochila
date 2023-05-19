@@ -21,6 +21,7 @@ public class Guloso2 {
         objetosNaMochila.getObjetoList().forEach(objeto -> {
             System.out.println("ITEM INDICE:" + objeto.getRowIndex() + " || PESO: " + objeto.getPeso() + " || VALOR TOTAL: " + objeto.getValorTotal());
         });
+        System.out.println("\n >>>>>>>>> Considerando um algoritmo guloso no qual se escolha o objeto MAIS LEVE, TEMOS:");
         System.out.println("\nPESO MÍNIMO ATINGIDO: " + objetosNaMochila.getPesoAtingido() + " || PARA O VALOR VALOR MAXIMO: " + objetosNaMochila.getValorTotal());
         System.out.println("TEMPO TOTAL DA EXECUÇÃO: " + (finish-init) + " (milisegundos)");
         System.out.println("NUMERO DE ITERAÇÕES: " + objetosNaMochila.getObjetoList().size());
