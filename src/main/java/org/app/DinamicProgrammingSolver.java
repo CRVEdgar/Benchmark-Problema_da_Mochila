@@ -11,10 +11,12 @@ public class DinamicProgrammingSolver {
 
     public static void main(String[] args) {
         DinamicProgrammingService service = new DinamicProgrammingService();
-
+        long init = System.currentTimeMillis();
         service.solverDinamic(LIMITE_MOCHILA ,getObjetos());
+        long finish = System.currentTimeMillis();
 
         System.out.println("VALOR TOTAL: " + OBJETOS_ARMAZENADOS.getValorTotal() + " || PESO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
+        System.out.println("TEMPO TOTAL DA EXECUÇÃO: " + (finish-init) + " (milisegundos)");
 
     }
 }

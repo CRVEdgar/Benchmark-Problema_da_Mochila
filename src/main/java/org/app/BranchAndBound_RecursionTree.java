@@ -11,12 +11,9 @@ public class BranchAndBound_RecursionTree {
 
     public static void main(String[] args) {
         BranchBoundService service = new BranchBoundService();
-
+        long init = System.currentTimeMillis();
         service.solverRecursionTree(getObjetos());
-
-        System.out.println(" ****** VALORES ÓTIMOS: ******" );
-        System.out.printf("PESO MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
-        System.out.printf("\nVALOR MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getValorTotal());
+        long finish = System.currentTimeMillis();
 
         System.out.println( "\n");
 
@@ -25,6 +22,11 @@ public class BranchAndBound_RecursionTree {
             System.out.println("nodos adicionado: " + nodo.getPesoTotal() + " || " + nodo.getValorTotal());
         });
 
-
+        System.out.println("\n\n");
+        System.out.println(" ****** VALORES ÓTIMOS: ******" );
+        System.out.printf("PESO MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getPesoAtingido());
+        System.out.printf("\nVALOR MAXIMO ATINGIDO: " + OBJETOS_ARMAZENADOS.getValorTotal());
+        System.out.println("\nTEMPO TOTAL DA EXECUÇÃO: " + (finish-init) + " (milisegundos)");
+        System.out.println("NUMERO DE ITERAÇÕES: " + OBJETOS_ARMAZENADOS.getNodos().size());
     }
 }
